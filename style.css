@@ -1,0 +1,182 @@
+:root {
+    --bg-color: #FDFBF7;       /* Blanco lino suave */
+    --panel-color: #FFFFFF;    /* Blanco absoluto */
+    --text-main: #2A2C29;       /* Carbón orgánico */
+    --text-muted: #838580;     /* Gris piedra */
+    --accent: #6B7567;         /* Verde musgo apagado Japandi */
+    --accent-light: #EBECE8;   /* Fondo sutil verde grisáceo */
+    --border-color: #EAE6DF;   /* Arena pálido para bordes */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: var(--text-main);
+    padding: 10px;
+}
+
+.chat-container {
+    width: 100%;
+    max-width: 440px;
+    height: 92vh;
+    background: var(--panel-color);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 12px 40px rgba(42, 44, 41, 0.03);
+}
+
+.chat-header {
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    position: relative;
+}
+
+.chat-header .avatar {
+    width: 40px;
+    height: 40px;
+    background-color: var(--accent);
+    color: #FFFFFF;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+}
+
+.header-info h2 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    margin-bottom: 2px;
+}
+
+.header-info p {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.status-indicator {
+    width: 8px;
+    height: 8px;
+    background-color: #94A684;
+    border-radius: 50%;
+    position: absolute;
+    right: 24px;
+}
+
+.chat-messages {
+    flex: 1;
+    padding: 24px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #FCFAF6;
+}
+
+/* Scrollbar estética e integrada */
+.chat-messages::-webkit-scrollbar {
+    width: 4px;
+}
+.chat-messages::-webkit-scrollbar-thumb {
+    background-color: var(--border-color);
+    border-radius: 4px;
+}
+
+.message {
+    max-width: 85%;
+    padding: 14px 18px;
+    font-size: 0.92rem;
+    line-height: 1.6;
+    border-radius: 14px;
+    animation: slideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.message.bot {
+    background-color: var(--panel-color);
+    color: var(--text-main);
+    align-self: flex-start;
+    border: 1px solid var(--border-color);
+    border-top-left-radius: 4px;
+}
+
+.message.user {
+    background-color: var(--accent);
+    color: #FFFFFF;
+    align-self: flex-end;
+    border-top-right-radius: 4px;
+}
+
+/* Formateo interno de recomendaciones del experto */
+.message strong {
+    font-weight: 600;
+}
+
+.chat-input-area {
+    padding: 18px 24px;
+    background: var(--panel-color);
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.chat-input-area input {
+    flex: 1;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-color);
+    padding: 14px 18px;
+    border-radius: 10px;
+    outline: none;
+    font-size: 0.9rem;
+    color: var(--text-main);
+    transition: all 0.25s ease;
+}
+
+.chat-input-area input:focus {
+    border-color: var(--accent);
+    background-color: var(--panel-color);
+    box-shadow: 0 0 0 3px rgba(107, 117, 103, 0.06);
+}
+
+.chat-input-area button {
+    background: none;
+    border: none;
+    color: var(--accent);
+    cursor: pointer;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.chat-input-area button:hover {
+    color: #4A5247;
+    transform: scale(1.05);
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+}
